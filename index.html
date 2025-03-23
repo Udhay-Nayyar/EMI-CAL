@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="container-fluid bg-info">
+    <div class="d-flex justify-content-around">
+        <dl style="width: 300px;">
+            <dt>Amount you need to pay <span class="bi bi-currency-rupee"></span>
+                <br><input type="text" name="" id="giveInput1" size="35" class="form-control">
+            </dt>
+            <dd class="d-flex"><span>50,000 </span>&nbsp;&nbsp;<input onchange="fn1()" type="range" name=""
+                    id="takeInput1" class="form-range" min="50000" max="1000000">&nbsp;&nbsp; <span>10,00,000</span>
+            </dd>
+        </dl>
+        <dl style="width: 300px;">
+            <dt>How many years</span>
+                <br><input type="text" name="" id="giveInput2" size="35" class="form-control">
+            </dt>
+            <dd class="d-flex"><span>1</span>&nbsp;&nbsp;<input onchange="fn2()" type="range" name="" id="takeInput2"
+                    class="form-range" min="1" max="5">&nbsp;&nbsp; <span>5</span></dd>
+        </dl>
+        <dl style="width: 300px;">
+            <dt>How much intrest rate %</span>
+                <br><input type="text" name="" id="giveInput3" size="35" class="form-control">
+            </dt>
+            <dd class="d-flex"><span>10.25%</span>&nbsp;&nbsp;<input onchange="fn3()" type="range" name=""
+                    id="takeInput3" class="form-range" min="10.25" max="18.45" step="0.5">&nbsp;&nbsp;
+                <span>18.45%</span></dd>
+        </dl>
+    </div>
+    <div class="d-flex justify-content-end position-relative" style="margin-right: 100px;">
+        <button type="button" class="btn btn-dark text-end" onclick="Emi()">Calculate the Emi</button>
+    </div>
+    <h1 class="text-center" id="final"></h1>
+    <script type="text/javascript">
+        function fn1() {
+            amount = document.getElementById("giveInput1").value = document.getElementById("takeInput1").value;
+        }
+        function fn2() {
+            time = document.getElementById("giveInput2").value = document.getElementById("takeInput2").value;
+        }
+        function fn3() {
+            rate = document.getElementById("giveInput3").value = document.getElementById("takeInput3").value;
+        }
+        function Emi() {
+            amount1 = parseFloat(amount);
+            time1 = parseFloat(time);
+            rate1 = parseFloat(rate);
+
+            emiCal = (amount1 * rate1 * (Math.pow(1 + rate1, time1))) / (Math.pow(1 + rate1, time1))
+            // console.log(emiCal)
+            document.getElementById("final").innerHTML = emiCal;
+        }
+    </script>
+</body>
+
+</html>
